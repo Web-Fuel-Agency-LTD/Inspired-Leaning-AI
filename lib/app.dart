@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:inspired_learning_ai/pages/welcome/bloc/welcome_blocs.dart';
-import 'package:inspired_learning_ai/pages/welcome/welcome_page.dart';
+import 'package:inspired_learning_ai/screens/welcome/bloc/welcome_blocs.dart';
+import 'package:inspired_learning_ai/screens/welcome/welcome_screen.dart';
 
+import 'screens/login/login_screen.dart';
 import 'utils/theme/theme.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  final bool welcome;
+  const App({super.key, this.welcome = false});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class App extends StatelessWidget {
         themeMode: ThemeMode.system,
         theme: ILAppTheme.lightTheme,
         darkTheme: ILAppTheme.darkTheme,
-        home: WelcomePage(),
+        home: welcome? const LoginScreen() : const WelcomePage(),
       ),
       )
     );
