@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/image_strings.dart';
 import '../signup/signup_screen.dart';
+import 'loginWithEmail/login_with_email.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -38,9 +39,15 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(
                       height: 60,
                     ),
-                    const LoginButton(
+                    LoginButton(
                       imageLogin: 'assets/logo/email.png',
                       loginWith: 'Login with Email',
+                      onTap: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginWithEmail()));
+                      },
                     ),
                     const SizedBox(
                       height: 20,
@@ -92,23 +99,31 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         LoginButtonCircle(
                           imageLogin: 'assets/logo/facebook.png',
+                          onTap: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginWithEmail()));
+                          },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
                         LoginButtonCircle(
                           imageLogin: 'assets/logo/twitter.png',
+                          onTap: () {},
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
                         LoginButtonCircle(
                           imageLogin: 'assets/logo/tiktok.png',
+                          onTap: () {},
                         ),
                       ],
                     ),
@@ -148,19 +163,19 @@ class LoginScreen extends StatelessWidget {
 class LoginButton extends StatelessWidget {
   final String imageLogin;
   final String loginWith;
+  final VoidCallback? onTap;
 
   const LoginButton({
     required this.imageLogin,
     required this.loginWith,
+    this.onTap,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        
-      },
+      onTap: onTap,
       child: Container(
           height: 54,
           width: double.infinity,
@@ -187,18 +202,18 @@ class LoginButton extends StatelessWidget {
 
 class LoginButtonCircle extends StatelessWidget {
   final String imageLogin;
+  final VoidCallback onTap;
 
   const LoginButtonCircle({
     required this.imageLogin,
+    required this.onTap,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        
-      },
+      onTap: onTap,
       child: Container(
           width: 64,
           height: 64,

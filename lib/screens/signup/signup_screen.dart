@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/image_strings.dart';
 import '../login/login_screen.dart';
-import '../signupWithEmail/signup_with_email.dart';
+import 'signupWithEmail/signup_with_email.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -42,7 +42,7 @@ class SignupScreen extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const SignupWithEmail()));
+                                          SignupWithEmail()));
                       },
                     ),
                     const SizedBox(
@@ -51,13 +51,7 @@ class SignupScreen extends StatelessWidget {
                     SignupButton(
                       imageSignup: 'assets/logo/apple.png',
                       signupWith: 'Sign up with Apple',
-                      onTap: (){
-                        Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const LoginScreen()));
-                      },
+                      onTap: (){},
                     ),
                     const SizedBox(
                       height: 20,
@@ -65,13 +59,7 @@ class SignupScreen extends StatelessWidget {
                     SignupButton(
                       imageSignup: 'assets/logo/google.png',
                       signupWith: 'Sign up with Google',
-                      onTap: (){
-                        Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const LoginScreen()));
-                      },
+                      onTap: (){},
                     ),
                     const SizedBox(
                       height: 30,
