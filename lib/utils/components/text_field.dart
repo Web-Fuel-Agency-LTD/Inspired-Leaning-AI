@@ -5,14 +5,16 @@ class ILTextField extends StatefulWidget {
   final String hintText;
   final bool obscureText;
   final IconData? icon;
+  final Icon? prefix;
 
   const ILTextField({
-    super.key,
+    super.key, // Add Key? key parameter
     required this.controller,
     required this.hintText,
     this.obscureText = true,
     this.icon,
-  });
+    this.prefix,
+  }); // Call superclass constructor
 
   @override
   State<ILTextField> createState() => _ILTextFieldState();
@@ -31,8 +33,9 @@ class _ILTextFieldState extends State<ILTextField> {
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.controller,
-      obscureText: _obscureText,
+      obscureText: widget.obscureText, // Use widget.obscureText
       decoration: InputDecoration(
+        prefixIcon: widget.prefix, // Use widget.prefix
         contentPadding:
             const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         suffixIcon: widget.icon != null

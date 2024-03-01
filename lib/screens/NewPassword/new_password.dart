@@ -7,7 +7,6 @@ import '../../utils/components/elevated_button.dart';
 import '../../utils/components/text_field.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/image_strings.dart';
-import '../../utils/constants/text_strings.dart';
 
 class NewPassword extends StatelessWidget {
 

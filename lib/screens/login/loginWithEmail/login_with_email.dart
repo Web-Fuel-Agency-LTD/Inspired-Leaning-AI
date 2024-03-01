@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inspired_learning_ai/screens/forgotPassword/forgot_password.dart';
+import 'package:inspired_learning_ai/screens/homePage/home_page.dart';
 import 'package:inspired_learning_ai/utils/components/elevated_button.dart';
 import 'package:inspired_learning_ai/utils/components/text_field.dart';
 
@@ -81,6 +82,10 @@ class LoginWithEmail extends StatelessWidget {
                   const SizedBox(height: 50),
                   ILElevatedButton(
                       width: double.infinity, onPressed: () {
+                        Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HomePage()));
 
                       }, text: 'Login')
                 ]),
