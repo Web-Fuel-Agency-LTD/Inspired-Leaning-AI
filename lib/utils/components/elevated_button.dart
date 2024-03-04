@@ -11,7 +11,7 @@ class ILElevatedButton extends StatelessWidget {
     required this.width,
     required this.onPressed,
     required this.text,
-    this.borderRadius = 30.0, // Default border radius
+    this.borderRadius = 30.0,
   });
 
   @override

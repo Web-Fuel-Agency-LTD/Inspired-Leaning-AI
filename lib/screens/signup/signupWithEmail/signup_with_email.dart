@@ -107,7 +107,8 @@ class _SignupWithEmailState extends State<SignupWithEmail> {
                         ),
                         const SizedBox(height: 20),
                         const Text(ILText.enterDigit,
-                            style: TextStyle(color: Colors.white, fontSize: 16)),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 16)),
                         const SizedBox(height: 20),
                         Stack(
                           children: [
@@ -132,13 +133,17 @@ class _SignupWithEmailState extends State<SignupWithEmail> {
                           children: [
                             const Text(
                               'Didn\'t get the code?',
-                              style: TextStyle(color: Colors.white, fontSize: 16),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 16),
                             ),
                             TextButton(
                                 onPressed: () {},
                                 child: const Text(
                                   'RESEND',
-                                  style: TextStyle(color: ILColors.secondary, fontSize: 16, fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                      color: ILColors.secondary,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
                                 )),
                           ],
                         ),
@@ -201,7 +206,8 @@ class _SignupWithEmailState extends State<SignupWithEmail> {
                                           fontSize:
                                               16), // Change color of specific text
                                       // ignore: avoid_print
-                                      recognizer: TapGestureRecognizer()..onTap = () => print('Tap Here onTap'),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () => print('Tap Here onTap'),
                                     ),
                                     const TextSpan(
                                         text: ' and',
@@ -211,8 +217,9 @@ class _SignupWithEmailState extends State<SignupWithEmail> {
                                       style: const TextStyle(
                                           color: ILColors.secondary,
                                           fontSize: 16),
-                                          // ignore: avoid_print
-                                          recognizer: TapGestureRecognizer()..onTap = () => print('Tap Here onTap'),
+                                      // ignore: avoid_print
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () => print('Tap Here onTap'),
                                     ),
                                     const TextSpan(
                                         text:
@@ -227,7 +234,23 @@ class _SignupWithEmailState extends State<SignupWithEmail> {
                         const SizedBox(height: 30),
                         ILElevatedButton(
                             width: double.infinity,
-                            onPressed: () {},
+                            onPressed: () {
+                              if (firstNameTextController.text.isEmpty ||
+                                  lastNameTextController.text.isEmpty ||
+                                  emailTextController.text.isEmpty ||
+                                  verificationTextController.text.isEmpty ||
+                                  passwordTextController.text.isEmpty ||
+                                  confirmPasswordTextController.text.isEmpty ||
+                                  isChecked == false
+                                  ) {
+                                
+                                
+                                print('failed');
+                                null;
+                              } else {
+                                print('sign up');
+                              }
+                            },
                             text: 'Sign up')
                       ],
                     ),
