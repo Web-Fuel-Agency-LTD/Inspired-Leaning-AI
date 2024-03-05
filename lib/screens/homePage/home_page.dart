@@ -1,6 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:inspired_learning_ai/screens/account/account_screen.dart';
 import 'package:inspired_learning_ai/utils/components/text_field.dart';
 import 'package:inspired_learning_ai/utils/constants/colors.dart';
+
+import '../personalInformation/personal_information.dart';
 
 class HomePage extends StatelessWidget {
   final searchController = TextEditingController();
@@ -15,7 +20,9 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.person, color: ILColors.primary),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> PersonalInformationScreens()));
+            },
           ),
         ],
         centerTitle: true,
@@ -41,31 +48,40 @@ class HomePage extends StatelessWidget {
             topLeft: Radius.circular(40),
             topRight: Radius.circular(40),
           ),
-          child: BottomNavigationBar(
-            selectedFontSize: 13,
-            unselectedFontSize: 13,
-            unselectedItemColor: Colors.grey,
-            selectedItemColor: ILColors.secondary,
-            backgroundColor: ILColors.accent,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_outlined,
+          child: NavigationBar(
+            destinations: [
+              Container(
+                color: ILColors.primary,
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.home_outlined, color: ILColors.secondary,),
+                    Text('Home', style: TextStyle(color: ILColors.secondary),)],
                 ),
-                label: 'Home',
               ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.blur_circular,
+              Container(
+                color: ILColors.primary,
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.circle, color: Colors.grey),
+                    Text('Progress', style: TextStyle(color: Colors.grey))],
                 ),
-                label: 'Progress',
               ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person_outlined,
-                ),
-                label: 'Account', // Add label for the item
-              ),
+               GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const AccountScreen()));
+                },
+                 child: Container(
+                  color: ILColors.primary,
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.person_2_outlined),
+                      Text('Account', style: TextStyle(color: Colors.grey))],
+                  ),
+                               ),
+               ),
             ],
           ),
         ),
