@@ -3,6 +3,7 @@ import 'package:inspired_learning_ai/utils/components/elevated_button.dart';
 
 import '../../utils/components/text_field.dart';
 import '../../utils/constants/colors.dart';
+import '../homePage/home_page.dart';
 
 class PersonalInformationScreens extends StatelessWidget {
   final firstNameController = TextEditingController();
@@ -19,8 +20,11 @@ class PersonalInformationScreens extends StatelessWidget {
               'Personal Information',
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
-            leading: const Icon(
-              Icons.arrow_back_outlined,
+            leading: IconButton(
+              onPressed: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomePage()));
+              },
+              icon: const Icon(Icons.arrow_back_outlined),
               color: Colors.white,
             )),
         body: Padding(

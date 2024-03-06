@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:inspired_learning_ai/screens/personalInformation/personal_information.dart';
 
 import '../../utils/constants/colors.dart';
+import '../homePage/home_page.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -14,7 +16,11 @@ class AccountScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Account', style: TextStyle(color: Colors.white),),
           centerTitle: true,
-          leading: const Icon(Icons.arrow_back_outlined, color: Colors.white,),
+          leading: IconButton(
+            onPressed: (){
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomePage()));
+            },
+            icon: const Icon(Icons.arrow_back_outlined, color: Colors.white,)),
         ),
         body: Padding(
           padding: const EdgeInsets.all(25.0),
@@ -41,16 +47,18 @@ class AccountScreen extends StatelessWidget {
                     ],
                   ),
                   ],),
-                  const Icon(Icons.arrow_forward_ios, color: Colors.white,)
+                  IconButton(onPressed: (){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>PersonalInformationScreens()));
+                  }, icon: const Icon(Icons.arrow_forward_ios, color: Colors.white,)),
                 ],
               ),
               const SizedBox(height: 10,),
               const Divider(thickness: 0.1,),
               const SizedBox(height: 10,),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(children: [
+                  const Row(children: [
                    Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -59,16 +67,18 @@ class AccountScreen extends StatelessWidget {
                     ],
                   ),
                   ],),
-                   Icon(Icons.arrow_forward_ios, color: Colors.white,)
+                   IconButton(onPressed: (){
+                   
+                  }, icon: const Icon(Icons.arrow_forward_ios, color: Colors.white,)),
                 ],
               ),
               const SizedBox(height: 10,),
               const Divider(thickness: 0.1,),
               const SizedBox(height: 10,),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(children: [
+                  const Row(children: [
                    Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -77,7 +87,9 @@ class AccountScreen extends StatelessWidget {
                     ],
                   ),
                   ],),
-                   Icon(Icons.arrow_forward_ios, color: Colors.white,)
+                   IconButton(onPressed: (){
+                    
+                  }, icon: const Icon(Icons.arrow_forward_ios, color: Colors.white,)),
                 ],
               ),
               const SizedBox(height: 10,),
