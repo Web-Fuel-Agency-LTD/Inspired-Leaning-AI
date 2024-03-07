@@ -46,7 +46,7 @@ class LoginScreen extends StatelessWidget {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginWithEmail()));
+                                builder: (context) => const LoginWithEmail()));
                       },
                     ),
                     const SizedBox(
