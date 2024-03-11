@@ -1,19 +1,30 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:inspired_learning_ai/models/category_model.dart';
 import 'package:inspired_learning_ai/screens/account/account_screen.dart';
 import 'package:inspired_learning_ai/utils/components/text_field.dart';
 import 'package:inspired_learning_ai/utils/constants/colors.dart';
+import 'package:inspired_learning_ai/utils/constants/image_strings.dart';
 
 import '../personalInformation/personal_information.dart';
 
 class HomePage extends StatelessWidget {
-  final searchController = TextEditingController();
-
   HomePage({super.key});
+
+  final searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    // TODO: connect to the backend
+    // TODO: replace the sample data with the actual data from the backend
+    final categories = [
+      CategoryModel(name: '11+', image: ILImages.category),
+      CategoryModel(name: 'GCSE', image: ILImages.category1),
+      CategoryModel(name: 'A-Level', image: ILImages.category2),
+      CategoryModel(name: 'University', image: ILImages.category),
+      CategoryModel(name: 'Careers', image: ILImages.category1),
+      CategoryModel(name: 'General', image: ILImages.category2),
+    ];
+
     return Scaffold(
       backgroundColor: ILColors.dark,
       appBar: AppBar(
@@ -21,7 +32,10 @@ class HomePage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.person, color: ILColors.primary),
             onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> PersonalInformationScreens()));
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => PersonalInformationScreens()));
             },
           ),
         ],
@@ -55,8 +69,15 @@ class HomePage extends StatelessWidget {
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.home_outlined, color: ILColors.secondary,),
-                    Text('Home', style: TextStyle(color: ILColors.secondary),)],
+                    Icon(
+                      Icons.home_outlined,
+                      color: ILColors.secondary,
+                    ),
+                    Text(
+                      'Home',
+                      style: TextStyle(color: ILColors.secondary),
+                    )
+                  ],
                 ),
               ),
               Container(
@@ -65,73 +86,120 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.circle, color: Colors.grey),
-                    Text('Progress', style: TextStyle(color: Colors.grey))],
+                    Text('Progress', style: TextStyle(color: Colors.grey))
+                  ],
                 ),
               ),
-               GestureDetector(
+              GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const AccountScreen()));
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AccountScreen()));
                 },
-                 child: Container(
+                child: Container(
                   color: ILColors.primary,
                   child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.person_2_outlined),
-                      Text('Account', style: TextStyle(color: Colors.grey))],
+                      Text('Account', style: TextStyle(color: Colors.grey))
+                    ],
                   ),
-                               ),
-               ),
+                ),
+              ),
             ],
           ),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(25.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              RichText(
-                text: const TextSpan(
-                  style: TextStyle(fontSize: 29, color: Colors.white),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'What do you want to ',
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            RichText(
+              text: const TextSpan(
+                style: TextStyle(fontSize: 29, color: Colors.white),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'What do you want to ',
+                  ),
+                  TextSpan(
+                    text: 'learn',
+                    style: TextStyle(
+                        color:
+                            ILColors.primary), // Change color of specific word
+                  ),
+                  TextSpan(
+                    text: ' today?',
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 30),
+            ILTextField(
+              obscureText: false,
+              controller: searchController,
+              hintText: 'Search for anything',
+              prefix: const Icon(Icons.search_rounded),
+            ),
+            const SizedBox(height: 30),
+            Expanded(
+              child: SingleChildScrollView(
+                child: GridView.count(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  children: List.generate(
+                    categories.length,
+                    (index) => Container(
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        image: DecorationImage(
+                          image: NetworkImage(categories[index].image),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          Container(
+                            height: 104,
+                            width: MediaQuery.of(context).size.width / 2,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                colors: [
+                                  ILColors.primary.withOpacity(.88),
+                                  Colors.transparent,
+                                ],
+                                stops: const [0.2, 1.0],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text(
+                              categories[index].name,
+                              style: const TextStyle(
+                                color: ILColors.textWhite,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    TextSpan(
-                      text: 'learn',
-                      style: TextStyle(
-                          color: ILColors
-                              .primary), // Change color of specific word
-                    ),
-                    TextSpan(
-                      text: ' today?',
-                    ),
-                  ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 30),
-              ILTextField(
-                obscureText: false,
-                controller: searchController,
-                hintText: 'Search for anything',
-                prefix: const Icon(Icons.search_rounded),
-              ),
-              // Container(
-              //     child: GridView(
-              //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              //     crossAxisCount: 2,
-              //     crossAxisSpacing: 10,
-              //     mainAxisSpacing: 10,
-              //   ),
-              //   children: [
-              //     Container(color: ILColors.accent),
-              //     Container(color: ILColors.accent),
-              //     Container(color: ILColors.accent),
-              //   ],
-              // ))
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
