@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:inspired_learning_ai/core/utils/constants/colors.dart';
 import 'package:inspired_learning_ai/core/utils/constants/text_strings.dart';
 
-class CommingSoonDialog {
-  static void show(BuildContext context, String category) {
+class ComingSoonDialog {
+  static void show(BuildContext context, String content) {
     showDialog(
       context: context,
       builder: (context) {
@@ -43,7 +42,7 @@ class CommingSoonDialog {
                 ),
                 const SizedBox(height: 18),
                 const Text(
-                  'Comming Soon...',
+                  'Coming Soon...',
                   style: TextStyle(
                     color: ILColors.primary,
                     fontSize: 20,
@@ -53,7 +52,7 @@ class CommingSoonDialog {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Exciting News! $category courses are launching soon!${ILText.commingSoon}',
+                  '$content ${ILText.commingSoon}',
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),
