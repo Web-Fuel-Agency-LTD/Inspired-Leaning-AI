@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:inspired_learning_ai/features/main/domain/entities/category_model.dart';
 import 'package:inspired_learning_ai/features/main/presentation/widgets/comming_soon.dart';
 import 'package:inspired_learning_ai/features/user/presentation/screens/account_screen.dart';
@@ -7,6 +8,7 @@ import 'package:inspired_learning_ai/core/utils/constants/colors.dart';
 import 'package:inspired_learning_ai/core/utils/constants/image_strings.dart';
 
 import '../../../user/presentation/screens/personal_information.dart';
+import 'learning_types.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -81,14 +83,20 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                color: ILColors.primary,
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.circle, color: Colors.grey),
-                    Text('Progress', style: TextStyle(color: Colors.grey))
-                  ],
+              GestureDetector(
+                onTap: () {
+                  
+
+                },
+                child: Container(
+                  color: ILColors.primary,
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.circle, color: Colors.grey),
+                      Text('Progress', style: TextStyle(color: Colors.grey))
+                    ],
+                  ),
                 ),
               ),
               GestureDetector(
@@ -103,7 +111,7 @@ class HomePage extends StatelessWidget {
                   child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.person_2_outlined),
+                      Icon(Icons.person_2_outlined, color: Colors.grey,),
                       Text('Account', style: TextStyle(color: Colors.grey))
                     ],
                   ),
