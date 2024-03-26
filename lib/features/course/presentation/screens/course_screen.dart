@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inspired_learning_ai/core/utils/constants/colors.dart';
 import 'package:inspired_learning_ai/core/utils/constants/image_strings.dart';
+import 'package:inspired_learning_ai/core/utils/constants/text_strings.dart';
 import 'package:inspired_learning_ai/features/course/domain/entities/course.dart';
 import 'package:inspired_learning_ai/features/course/presentation/widgets/course_item.dart';
 
@@ -13,17 +14,55 @@ class CourseScreen extends StatelessWidget {
     //TODO: connect to the backend
     //TODO: replace the sample data with the actual data from the backend
     final courses = [
-      CourseEntity(id: 'id', name: 'History', image: ILImages.course),
-      CourseEntity(
-          id: 'id', name: 'European Literature', image: ILImages.course1),
-      CourseEntity(
-          id: 'id', name: 'Geography', image: ILImages.course2, progress: 0.3),
-      CourseEntity(
-          id: 'id', name: 'Religious Studies', image: ILImages.course3),
-      CourseEntity(id: 'id', name: 'Economics', image: ILImages.course4),
-      CourseEntity(id: 'id', name: 'Geology', image: ILImages.course5),
-      CourseEntity(id: 'id', name: 'Pyschology', image: ILImages.course6),
-      CourseEntity(id: 'id', name: 'Sociology', image: ILImages.course7),
+      const CourseEntity(
+        id: 'id',
+        name: 'History',
+        image: ILImages.course,
+        description: ILText.courseDescription,
+      ),
+      const CourseEntity(
+        id: 'id',
+        name: 'European Literature',
+        image: ILImages.course1,
+        description: ILText.courseDescription,
+      ),
+      const CourseEntity(
+        id: 'id',
+        name: 'Geography',
+        image: ILImages.course2,
+        progress: 4.2,
+        description: ILText.courseDescription,
+      ),
+      const CourseEntity(
+        id: 'id',
+        name: 'Religious Studies',
+        image: ILImages.course3,
+        description: ILText.courseDescription,
+      ),
+      const CourseEntity(
+        id: 'id',
+        name: 'Economics',
+        image: ILImages.course4,
+        description: ILText.courseDescription,
+      ),
+      const CourseEntity(
+        id: 'id',
+        name: 'Geology',
+        image: ILImages.course5,
+        description: ILText.courseDescription,
+      ),
+      const CourseEntity(
+        id: 'id',
+        name: 'Pyschology',
+        image: ILImages.course6,
+        description: ILText.courseDescription,
+      ),
+      const CourseEntity(
+        id: 'id',
+        name: 'Sociology',
+        image: ILImages.course7,
+        description: ILText.courseDescription,
+      ),
     ];
 
     return Scaffold(

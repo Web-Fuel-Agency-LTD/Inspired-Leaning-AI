@@ -31,6 +31,7 @@ dependencies:
   cached_network_image: ^3.2.3
   cupertino_icons: ^1.0.6
   dio: ^5.4.1
+  easy_pie_chart: ^1.0.0
   equatable: ^2.0.5
   flutter:
     sdk: flutter
@@ -67,6 +68,7 @@ flutter:
     # - assets/icons/
     - assets/images/
     - assets/logo/
+    - assets/module/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

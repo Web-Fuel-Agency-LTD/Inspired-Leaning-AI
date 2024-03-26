@@ -64,53 +64,66 @@ class HomePage extends StatelessWidget {
             topLeft: Radius.circular(40),
             topRight: Radius.circular(40),
           ),
-          child: NavigationBar(
-            destinations: [
-              Container(
-                color: ILColors.primary,
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.home_outlined,
-                      color: ILColors.secondary,
-                    ),
-                    Text(
-                      'Home',
-                      style: TextStyle(color: ILColors.secondary),
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                color: ILColors.primary,
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.circle, color: Colors.grey),
-                    Text('Progress', style: TextStyle(color: Colors.grey))
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AccountScreen()));
-                },
-                child: Container(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 0.0),
+            child: NavigationBar(
+              backgroundColor: ILColors.primary,
+              destinations: [
+                Container(
                   color: ILColors.primary,
                   child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.person_2_outlined),
-                      Text('Account', style: TextStyle(color: Colors.grey))
+                      Icon(
+                        Icons.home_outlined,
+                        color: ILColors.secondary,
+                      ),
+                      Text(
+                        'Home',
+                        style: TextStyle(color: ILColors.secondary),
+                      )
                     ],
                   ),
                 ),
-              ),
-            ],
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    color: ILColors.primary,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.circle, color: Colors.grey),
+                        Text('Progress', style: TextStyle(color: Colors.grey))
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AccountScreen()));
+                  },
+                  child: Container(
+                    color: ILColors.primary,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.person_2_outlined,
+                          color: Colors.grey,
+                        ),
+                        Text('Account', style: TextStyle(color: Colors.grey))
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

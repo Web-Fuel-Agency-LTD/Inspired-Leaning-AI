@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:inspired_learning_ai/core/utils/components/coming_soon_dialog.dart';
 import 'package:inspired_learning_ai/core/utils/constants/colors.dart';
 import 'package:inspired_learning_ai/features/course/domain/entities/course.dart';
+import 'package:inspired_learning_ai/features/course/presentation/screens/course_overview_screen.dart';
 import 'package:progresso/progresso.dart';
 
 class CourseItem extends StatelessWidget {
@@ -13,12 +12,21 @@ class CourseItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final progress = (course.progress / course.modules.length) * 100;
+    final progressBarValue = progress / 100;
+
     return GestureDetector(
       onTap: () {
         //sample action to show the coming soon dialog
-        if (course.progress == null) {
+        if (course.progress == 0) {
           ComingSoonDialog.show(
               context, 'Exciting News! 4 more exam board coming soon.');
+        } else {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => CourseOverviewScreen(course: course)));
         }
       },
       child: SizedBox(
@@ -33,7 +41,7 @@ class CourseItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
               ),
               child: SizedBox(
-                height: 140,
+                height: size.height / 6.5,
                 child: Stack(
                   children: [
                     CachedNetworkImage(
@@ -67,7 +75,7 @@ class CourseItem extends StatelessWidget {
                       ),
                     ),
                     Visibility(
-                      visible: course.progress != null,
+                      visible: course.progress > 0,
                       child: Positioned(
                         bottom: 16,
                         left: 0,
@@ -82,7 +90,7 @@ class CourseItem extends StatelessWidget {
                             color: ILColors.textSecondary.withOpacity(.6),
                           ),
                           child: Progresso(
-                            progress: 0.3,
+                            progress: progressBarValue,
                             progressStrokeWidth: 10,
                             backgroundStrokeWidth: 10,
                             progressColor: ILColors.secondary,
@@ -113,10 +121,10 @@ class CourseItem extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: course.progress != null,
-                  child: const Text(
-                    '35%',
-                    style: TextStyle(
+                  visible: course.progress > 0,
+                  child: Text(
+                    '${progress.toStringAsFixed(0)}%',
+                    style: const TextStyle(
                       color: ILColors.primary,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
