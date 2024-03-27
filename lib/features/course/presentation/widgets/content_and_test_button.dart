@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:inspired_learning_ai/core/utils/constants/colors.dart';
+import 'package:inspired_learning_ai/features/course/presentation/screens/course_complete_screen.dart';
 
 class ModuleContentAndTest extends StatelessWidget {
   const ModuleContentAndTest({super.key});
@@ -53,7 +54,14 @@ class ModuleContentAndTest extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 GestureDetector(
-                  onTap: () => Navigator.pop(context),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CourseComplete(),
+                      ),
+                    );
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(

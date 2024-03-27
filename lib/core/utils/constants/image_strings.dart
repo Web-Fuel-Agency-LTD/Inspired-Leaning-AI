@@ -68,4 +68,10 @@ class ILImages {
       'https://s3-alpha-sig.figma.com/img/7d30/1f8b/491494e88aae1183f1bf146aa92a7789?Expires=1711324800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fnh6ZFY4g9PxyRF9nSpf2lWVsifxluvIf2rM~bUDcqtt9q7afqU9TcWVfx2ITQeH~mLbTVDdUjIDX~5iAQXR0V-S6DPkTtd8ZTNusZ5BDv-eN-17VuTLGOY803lvCqYGKfku3M5sL2hgJNbqB4kuvkFD8hVxbNoXc053LfAb2SpQy~zDFxTON51D4-FMA~tQfuoaHBESW~ORvi1Rdwyu2k8syPqr6aQa~Xg7oZlDrnUQ34N3JM20WK0JQOTQBYa7-yiWj3ABmORy62MIpgTiL3WSu-mok-909~qYLhVXg00e2Vpp5kWjyzWQPSn4ZtE2a28~vzUH0WHYQv-UgN8wQw__';
   static const String sqa =
       'https://s3-alpha-sig.figma.com/img/f4cc/b413/780e366ad195b2bb21afab2e141949db?Expires=1711324800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aY9KuS70M8RedENwniPaQ5wFZPSnzNQO6YHiQzOGCDHNzXe3TG6rgwFBZ6soc5e2bGS8qh-e-YQNlrK4VrvhSq4v7kg7Mk5p2ea9c8I7Q9VaaAc8AYgNiQlzMEhU~Md6kmIqrsjv-lqNqOL-IECNjm8dznFC4VzYu3i~KDd1nofGSfZ6Emep9uavxtplENJ7x9p5cE5HLKb6l9NVJBbMIPYqkYWDsqEKHMuKtqDIK3MBle8nmgxJBA463Olx1ijeJJw0JGJ~SeO1ZbVUIlXSYQdULMUzYvBihy0RUpu9r1v~S0Db12Dae~~ws1nFFjLxZMEf~3iGUQFg3w6yPjkr0g__';
+
+  //course complete images
+  static const String courseComplete =
+      'https://s3-alpha-sig.figma.com/img/5df2/90fe/5d205ee51da8b795d2ff63271cf776a1?Expires=1712534400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TheHGVxenFgwO967liGh35TWgobJ7zLDF7w5GGl7kJBzRzq~hq7FVpEyr2awmLnss0D2TK85Yzb2amJZGKmObrnwBQhiBjjDhOWmLHDtURiUB-f7KsAOBOGZOvXNpCWGQY0scWwq-eOWbrN5c6TugP-Bjnat~EKhhsv9TyFrWSGYByCbwRemzudHK~BRvPp-tcYApxmaTPA6jibomZLevhJhPSl8uQV233Blu8pDAXgBZPSj2k0UoDrBzURmXohkCfT1IW3ZqF0ZRGIVJ9Qbsoml6xxwjZwp4bT-JPOW6UndYfJUBagRSY1eCxLnYMymF~hhjIi~UxmirrhGk-OV3w__';
+  static const String courseCompleteHuman =
+      'https://s3-alpha-sig.figma.com/img/e10d/8662/6f7b0b387912997972d364bf5cbd5765?Expires=1712534400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aUEb18IGhWWX0~NDUpGp3xPM320IDt-QeRQD26CaCN0fWW9X7izFCk0Uw-MkYzFiCcbjhVbj3WxABGav9qa0boD-dyc2~tO0TEgAGwAWP8-dOy-ob4KY7tpiblibROEqxJE9yHUSY12xDgkIqGO43FiDaiUmlCPWl2JxVswHnLKLozoPfYmUocZRXVgdMMCYm7CUVOX7Nxagb9475yenQiSZjRnRaUb~FSP6w0Ly8ULXFqtcTipL2zEhi-5iNDbNcUG~B5kK5dGQNFHkko51HtfJ1myPgl1ggIirwmd6JSASeT3O6obSp7ShqcBz40gfPXmPjSHuUTvFbhBbmEJ2yw__';
 }
