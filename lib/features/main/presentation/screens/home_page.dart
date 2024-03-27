@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:inspired_learning_ai/features/main/domain/entities/category_model.dart';
-import 'package:inspired_learning_ai/features/main/presentation/widgets/comming_soon.dart';
+import 'package:inspired_learning_ai/features/main/domain/entities/category.dart';
+import 'package:inspired_learning_ai/features/main/presentation/screens/sub_category_screen.dart';
+import 'package:inspired_learning_ai/core/utils/components/coming_soon_dialog.dart';
 import 'package:inspired_learning_ai/features/user/presentation/screens/account_screen.dart';
 import 'package:inspired_learning_ai/core/utils/components/text_field.dart';
 import 'package:inspired_learning_ai/core/utils/constants/colors.dart';
 import 'package:inspired_learning_ai/core/utils/constants/image_strings.dart';
 
 import '../../../user/presentation/screens/personal_information.dart';
-import 'learning_types.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -20,12 +19,12 @@ class HomePage extends StatelessWidget {
     // TODO: connect to the backend
     // TODO: replace the sample data with the actual data from the backend
     final categories = [
-      CategoryModel(name: '11+', image: ILImages.category),
-      CategoryModel(name: 'GCSE', image: ILImages.category1),
-      CategoryModel(name: 'A-Level', image: ILImages.category2),
-      CategoryModel(name: 'University', image: ILImages.category),
-      CategoryModel(name: 'Careers', image: ILImages.category1),
-      CategoryModel(name: 'General', image: ILImages.category2),
+      CategoryEntity(name: '11+', image: ILImages.category),
+      CategoryEntity(name: 'GCSE', image: ILImages.category1),
+      CategoryEntity(name: 'A-Level', image: ILImages.category2),
+      CategoryEntity(name: 'University', image: ILImages.category3),
+      CategoryEntity(name: 'Careers', image: ILImages.category4),
+      CategoryEntity(name: 'General', image: ILImages.category5),
     ];
 
     return Scaffold(
@@ -65,59 +64,66 @@ class HomePage extends StatelessWidget {
             topLeft: Radius.circular(40),
             topRight: Radius.circular(40),
           ),
-          child: NavigationBar(
-            destinations: [
-              Container(
-                color: ILColors.primary,
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.home_outlined,
-                      color: ILColors.secondary,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 0.0),
+            child: NavigationBar(
+              backgroundColor: ILColors.primary,
+              destinations: [
+                Container(
+                  color: ILColors.primary,
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.home_outlined,
+                        color: ILColors.secondary,
+                      ),
+                      Text(
+                        'Home',
+                        style: TextStyle(color: ILColors.secondary),
+                      )
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    color: ILColors.primary,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.circle, color: Colors.grey),
+                        Text('Progress', style: TextStyle(color: Colors.grey))
+                      ],
                     ),
-                    Text(
-                      'Home',
-                      style: TextStyle(color: ILColors.secondary),
-                    )
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  
-
-                },
-                child: Container(
-                  color: ILColors.primary,
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.circle, color: Colors.grey),
-                      Text('Progress', style: TextStyle(color: Colors.grey))
-                    ],
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AccountScreen()));
-                },
-                child: Container(
-                  color: ILColors.primary,
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.person_2_outlined, color: Colors.grey,),
-                      Text('Account', style: TextStyle(color: Colors.grey))
-                    ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AccountScreen()));
+                  },
+                  child: Container(
+                    color: ILColors.primary,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.person_2_outlined,
+                          color: Colors.grey,
+                        ),
+                        Text('Account', style: TextStyle(color: Colors.grey))
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -161,13 +167,26 @@ class HomePage extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
+                  childAspectRatio: 1.2,
                   children: List.generate(
                     categories.length,
                     (index) => GestureDetector(
                       onTap: () {
+                        // sample code to show the comming soon dialog
                         if (index == 0) {
-                          CommingSoonDialog.show(
-                              context, categories[index].name);
+                          ComingSoonDialog.show(
+                            context,
+                            'Exciting News! ${categories[index].name} courses are launching soon!',
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SubCategoryScreen(
+                                categoryName: categories[index].name,
+                              ),
+                            ),
+                          );
                         }
                       },
                       child: Container(
@@ -190,7 +209,7 @@ class HomePage extends StatelessWidget {
                                   begin: Alignment.bottomCenter,
                                   end: Alignment.topCenter,
                                   colors: [
-                                    ILColors.primary.withOpacity(.88),
+                                    ILColors.accent.withOpacity(.88),
                                     Colors.transparent,
                                   ],
                                   stops: const [0.2, 1.0],

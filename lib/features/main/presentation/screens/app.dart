@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:inspired_learning_ai/features/authentication/presentation/screens/login_screen.dart';
 import 'package:inspired_learning_ai/features/main/presentation/bloc/welcome_blocs.dart';
-import 'package:inspired_learning_ai/features/main/presentation/screens/home_page.dart';
 import 'package:inspired_learning_ai/features/main/presentation/screens/welcome_screen.dart';
 
 import '../../../../core/utils/theme/theme.dart';
@@ -21,7 +21,7 @@ class App extends StatelessWidget {
             themeMode: ThemeMode.system,
             theme: ILAppTheme.lightTheme,
             darkTheme: ILAppTheme.darkTheme,
-            home: welcome ? HomePage() : const WelcomePage(),
+            home: welcome ? const LoginScreen() : const WelcomePage(),
           ),
         ));
   }
